@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biscotto's Mod Schermata di Benvenuto</title>
+    <!-- Tailwind CSS CDN for modern responsive utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: "Coolvetica";
+            src: url("coolvetica.otf") format("opentype");
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: "Coolvetica", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .header-footer-bg {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between m-0">
+
+    <header class="header-footer-bg text-white py-6 px-4 text-center shadow-md">
+        <h1 class="text-4xl font-normal tracking-wide">Biscotto's Mod</h1>
+        <p class="text-lg mt-1 font-normal">Benvenuto nel Server di Biscotto39</p>
+    </header>
+
+    <main class="w-full max-w-5xl mx-auto px-6 py-8 flex-grow space-y-8">
+        
+        <!-- Section 1: Riguardo a questo Server -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">Riguardo a questo Server</h2>
+            <p class="mb-1 text-gray-800">Utilizza ULX.</p>
+            <p class="text-gray-800">L'ho creato per giocare con tutti i miei amici di Discord!</p>
+        </section>
+
+        <!-- Section 2: Regole -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">Regole</h2>
+            <ol class="list-decimal list-inside space-y-1 text-gray-800 pl-2">
+                <li>Sii gentile</li>
+                <li>Divertiti!</li>
+            </ol>
+        </section>
+
+        <!-- Section 3: Segnalare i Pezzi di Fango -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">Segnalare i "Pezzi di Fango"</h2>
+            <p class="text-gray-800">Se qualcuno sta dando fastidio, avvisa immediatamente Biscotto che li mangerà in un botto.</p>
+        </section>
+
+        <!-- Section 4: Addons Installati -->
+        <section>
+            <div class="mb-4 border-b border-gray-200 pb-1">
+                <h2 class="text-2xl font-normal">Addons Installati <span id="addon-count" class="text-sm font-normal text-gray-500"></span></h2>
+            </div>
+            
+            <!-- Addons List (Senza box scorrevole) -->
+            <ul id="addons-list" class="list-disc list-inside space-y-1 text-sm text-gray-800 leading-relaxed">
+                <!-- Javascript will populate items here -->
+            </ul>
+        </section>
+
+        <!-- Section 5: I nostri Admin -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">I nostri Admin</h2>
+            <ul class="list-disc list-inside space-y-1 text-gray-800 pl-2">
+                <li>BisukoChan</li>
+                <li>Marco</li>
+            </ul>
+        </section>
+		
+		<!-- Section 6: Crediti -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">Crediti</h2>
+            <ul class="list-disc list-inside space-y-1 text-gray-800 pl-2">
+			    <p class="text-gray-800">ADDON "Hide And Seek New [ With Gamemode ]" creata da Marco</p>
+                <p class="text-gray-800">SCHERMATA DI CARICAMENTO creata da Marco</p>
+                <p class="text-gray-800">SCHERMATA DI BENVENUTO creata da Biscotto39</p>
+			    <p class="text-gray-800">SETUP e HOSTING SERVER grazie a Biscotto39</p>
+				<p class="text-gray-800">DIVERTIMENTO ASSICURATO grazie a nostri fantastici amici!</p>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="header-footer-bg text-white py-4 px-4 text-center mt-8 shadow-inner">
+        <p class="text-base font-normal">Potenziato da ULX </p>
+    </footer>
+
+    <script>
+        // Array di configurazione degli Addons del server.
+        const serverAddons = [
+            { name: "[FNaF2] CoolioArt's Old Animatronic Pack", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=1083394990" },
+            { name: "[FNaF2] CoolioArt's Old Animatronic Pack Materials", url: "https://steamcommunity.com/workshop/filedetails/?id=1083430377" },
+            { name: "[PILL PACK] Bon The Rabbit", url: "https://steamcommunity.com/workshop/filedetails/?id=3540075490" },
+            { name: "[PILL PACK] Captain Clark", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3782745618" },
+            { name: "[PILL PACK] Kolossos", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3703631332" },
+            { name: "[PILL PACK] Monster Rat", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3765401686" },
+            { name: "[PILL PACK] Nosey", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3574746535" },
+            { name: "[PILL PACK] SCP 096", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3742941373" },
+            { name: "[PILL PACK] Withered Bon", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3780475144" },
+            { name: "[wOS] Animation Extension - Age of Chivalry", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=848953609" },
+            { name: "[wOS] Animation Extension - Base (Full Version)", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=757604550" },
+            { name: "[wOS] Animation Extension - Experimental", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=925184078" },
+            { name: "[wOS] Animation Extension - SMITE", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2640274798" },
+            { name: "[wOS] DynaBase - Dynamic Animation Manager", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2916561591" },
+            { name: "[wOS] DynaBase Legacy Extensions", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2917050373" },
+            { name: "Custom ULX Commands", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=718665054" },
+            { name: "Enhanced Parakeets Pill Base", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2992440811" },
+            { name: "Enhanced PlayerModel Selector", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=504945881" },
+            { name: "Fazbear's Ultimate Pill Pack Remaster", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=872114763" },
+            { name: "Fazbear's Ultimate Pill Pack Remaster 2 TE Materials", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=1178968248" },
+            { name: "Fazbear's Ultimate Pill Pack Remaster 2: New and Shiny", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=1178932853" },
+            { name: "Fazbear's Ultimate Pill Pack Remaster 2: Old yet Functionning", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=1145716636" },
+            { name: "Fazbear's Ultimate Pill Pack Remaster: Materials", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=1499302120" },
+            { name: "gm_fazbears_forgotten", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3300611332" },
+            { name: "gm_mallparking_plus", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3689358592" },
+            { name: "gm_neon_bigcity", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2607262101" },
+            { name: "gm_northbury", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3251774364" },
+            { name: "Media Player Redux", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3001397905" },
+            { name: "Outfitter: Multiplayer Playermodels!", url: "https://steamcommunity.com/workshop/filedetails/?id=882463775" },
+            { name: "Patterson Sewer", url: "https://steamcommunity.com/sharedfiles/filedetails?id=3477503517" },
+            { name: "ULIB", url: "https://steamcommunity.com/workshop/filedetails/?id=557962238" },
+            { name: "ULX", url: "https://steamcommunity.com/workshop/filedetails/?id=557962280" },
+            { name: "ULX Shortcut", url: "https://steamcommunity.com/workshop/filedetails/?id=2503159424" }
+        ];
+
+        // Funzione per renderizzare la lista completa degli addon nel DOM
+        function renderAddons() {
+            const listContainer = document.getElementById("addons-list");
+            const countContainer = document.getElementById("addon-count");
+            
+            listContainer.innerHTML = "";
+            countContainer.textContent = `(${serverAddons.length} al momento)`;
+
+            serverAddons.forEach(addon => {
+                const li = document.createElement("li");
+                li.className = "py-0.5";
+                li.innerHTML = `
+                    ${addon.name} - 
+                    <a href="${addon.url}" target="_blank" class="text-blue-600 hover:underline">Vedi nel Workshop</a>
+                `;
+                listContainer.appendChild(li);
+            });
+        }
+
+        // Caricamento iniziale all'avvio della pagina
+        window.addEventListener("DOMContentLoaded", () => {
+            renderAddons();
+        });
+    </script>
+
+</body>
+</html>
