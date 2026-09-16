@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biscotto's Mod Schermata di Benvenuto</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @font-face {
+            font-family: "Coolvetica";
+            src: url("coolvetica.otf") format("opentype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Coolvetica Book";
+            src: url("coolvetica-book.otf") format("opentype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: "Coolvetica Book", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        h1, h2 {
+            font-family: "Coolvetica", Arial, sans-serif;
+        }
+
+        .header-footer-bg {
+            background-color: #2196F3;
+        }
+
+        /* Animazione di comparsa */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-entry {
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .animate-entry-delayed {
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between m-0">
+
+    <header class="header-footer-bg text-white py-6 px-4 text-center shadow-md animate-entry">
+        <h1 class="text-4xl font-normal tracking-wide">Biscotto's Mod</h1>
+        <p class="text-lg mt-1 font-normal">Benvenuto nel Server di Biscotto39</p>
+    </header>
+
+    <main class="w-full max-w-5xl mx-auto px-6 py-8 flex-grow space-y-8 animate-entry-delayed">
+
+        <!-- Section 1: Riguardo a questo Server -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">Riguardo a questo Server</h2>
+            <p class="mb-1 text-gray-800">Utilizza ULX.</p>
+            <p class="text-gray-800">L'ho creato per giocare con tutti i miei amici di Discord!</p>
+        </section>
+
+        <!-- Section 2: Regole -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">Regole</h2>
+            <ol class="list-decimal list-inside space-y-1 text-gray-800 pl-2">
+                <li>Sii gentile</li>
+                <li>Divertiti!</li>
+            </ol>
+        </section>
+
+        <!-- Section 3: Segnalare i Pezzi di Fango -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">Segnalare i "Pezzi di Fango"</h2>
+            <p class="text-gray-800">Se qualcuno sta dando fastidio, avvisa immediatamente Biscotto che li mangerà in un botto.</p>
+        </section>
+
+        <!-- Section 4: Addons Installati -->
+        <section>
+            <div class="mb-4 border-b border-gray-200 pb-1">
+                <h2 class="text-2xl font-normal">
+                    Addons Installati
+                    <span id="addon-count" class="text-sm font-normal text-gray-500"></span>
+                </h2>
+            </div>
+
+            <ul id="addons-list" class="list-disc list-inside space-y-1 text-sm text-gray-800 leading-relaxed">
+                <!-- Javascript inserisce gli addon qui -->
+            </ul>
+        </section>
+
+        <!-- Section 5: I nostri Admin -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">I nostri SuperAdmin</h2>
+            <ul class="list-disc list-inside space-y-1 text-gray-800 pl-2">
+                <li>BisukoChan</li>
+                <li>Marco</li>
+            </ul>
+        </section>
+
+        <!-- Section 6: Crediti -->
+        <section>
+            <h2 class="text-2xl font-normal mb-3 border-b border-gray-200 pb-1">Crediti</h2>
+            <div class="space-y-1 text-gray-800">
+                <p>ADDON "Hide And Seek New [ With Gamemode ]" creata da Marco</p>
+                <p>SCHERMATA DI CARICAMENTO creata da Marco</p>
+                <p>SCHERMATA DI BENVENUTO creata da Biscotto39</p>
+                <p>SETUP e HOSTING SERVER grazie a Biscotto39</p>
+                <p>DIVERTIMENTO ASSICURATO grazie a nostri fantastici amici!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="header-footer-bg text-white py-4 px-4 text-center mt-8 shadow-inner animate-entry-delayed">
+        <p class="text-base font-normal">Potenziato da ULX</p>
+    </footer>
+
+    <!--
+        SUONO CUSTOM
+        Metti il file "benvenuto.mp3" nella stessa cartella di questo HTML.
+        Puoi cambiare il nome del file modificando src="benvenuto.mp3".
+    -->
+    <audio id="welcome-sound" src="benvenuto.mp3" preload="auto"></audio>
+
+    <script>
+        // ========================================
+        // ELENCO ADDON
+        // ========================================
+
+        const serverAddons = [
+            "[FNaF2] CoolioArt's Old Animatronic Pack",
+            "[FNaF2] CoolioArt's Old Animatronic Pack Materials",
+            "[PILL PACK] Bon The Rabbit",
+            "[PILL PACK] Captain Clark",
+            "[PILL PACK] Kolossos",
+            "[PILL PACK] Monster Rat",
+            "[PILL PACK] Nosey",
+            "[PILL PACK] SCP 096",
+            "[PILL PACK] Withered Bon",
+            "[wOS] Animation Extension - Age of Chivalry",
+            "[wOS] Animation Extension - Base (Full Version)",
+            "[wOS] Animation Extension - Experimental",
+            "[wOS] Animation Extension - SMITE",
+            "[wOS] DynaBase - Dynamic Animation Manager",
+            "[wOS] DynaBase Legacy Extensions",
+            "Custom ULX Commands",
+            "Enhanced Parakeets Pill Base",
+            "Enhanced PlayerModel Selector",
+            "Fazbear's Ultimate Pill Pack Remaster",
+            "Fazbear's Ultimate Pill Pack Remaster 2 TE Materials",
+            "Fazbear's Ultimate Pill Pack Remaster 2: New and Shiny",
+            "Fazbear's Ultimate Pill Pack Remaster 2: Old yet Functionning",
+            "Fazbear's Ultimate Pill Pack Remaster: Materials",
+            "gm_fazbears_forgotten",
+            "gm_mallparking_plus",
+            "gm_neon_bigcity",
+            "gm_northbury",
+            "Media Player Redux",
+            "Outfitter: Multiplayer Playermodels!",
+            "Patterson Sewer",
+            "ULIB",
+            "ULX",
+            "ULX Shortcut",
+            "Hide And Seek New [ With Gamemode ]"
+        ];
+
+        function renderAddons() {
+            const listContainer = document.getElementById("addons-list");
+            const countContainer = document.getElementById("addon-count");
+
+            listContainer.innerHTML = "";
+            countContainer.textContent = `(${serverAddons.length} al momento)`;
+
+            serverAddons.forEach(addonName => {
+                const li = document.createElement("li");
+                li.className = "py-0.5";
+                li.textContent = addonName;
+                listContainer.appendChild(li);
+            });
+        }
+
+        // ========================================
+        // SUONO DI BENVENUTO
+        // ========================================
+
+        const welcomeSound = document.getElementById("welcome-sound");
+
+        // Volume: da 0.0 a 1.0
+        welcomeSound.volume = 0.7;
+
+        // Impedisce che il suono venga avviato più di una volta
+        // durante questa apertura della pagina.
+        let welcomeSoundStarted = false;
+        let welcomeSoundStarting = false;
+
+        function playWelcomeSoundOnce() {
+            if (welcomeSoundStarted || welcomeSoundStarting) {
+                return;
+            }
+
+            welcomeSoundStarting = true;
+            welcomeSound.currentTime = 0;
+
+            const playPromise = welcomeSound.play();
+
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        welcomeSoundStarted = true;
+                        welcomeSoundStarting = false;
+                        removeInteractionFallback();
+                    })
+                    .catch(() => {
+                        // Alcuni browser bloccano l'autoplay.
+                        // In questo caso il suono verrà ritentato
+                        // alla prima interazione dell'utente.
+                        welcomeSoundStarting = false;
+                    });
+            } else {
+                // Compatibilità con browser/webview più vecchi.
+                welcomeSoundStarted = true;
+                welcomeSoundStarting = false;
+                removeInteractionFallback();
+            }
+        }
+
+        // ========================================
+        // FALLBACK PER AUTOPLAY BLOCCATO
+        // ========================================
+
+        function firstInteraction() {
+            playWelcomeSoundOnce();
+        }
+
+        function removeInteractionFallback() {
+            document.removeEventListener("click", firstInteraction);
+            document.removeEventListener("keydown", firstInteraction);
+            document.removeEventListener("touchstart", firstInteraction);
+            document.removeEventListener("pointerdown", firstInteraction);
+        }
+
+        document.addEventListener("click", firstInteraction);
+        document.addEventListener("keydown", firstInteraction);
+        document.addEventListener("touchstart", firstInteraction);
+        document.addEventListener("pointerdown", firstInteraction);
+
+        // ========================================
+        // AVVIO DELLA PAGINA
+        // ========================================
+
+        window.addEventListener("DOMContentLoaded", () => {
+            renderAddons();
+
+            // Prova a riprodurre il suono immediatamente.
+            // Se l'autoplay è consentito, parte qui.
+            // Se viene bloccato, partirà alla prima interazione.
+            playWelcomeSoundOnce();
+        });
+    </script>
+
+</body>
+</html>
